@@ -1,0 +1,201 @@
+.flex-container {
+    padding: 0;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.flex-container-justify {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    min-height: 55vh;
+}
+
+.file-item {
+    width: 200px;
+    margin: 5px;
+    height: 97px;
+    overflow: hidden;
+    border: 1px solid #d8d8d8;
+    border-radius: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blurring.dimmed.dimmable > :not(.dimmer) {
+    filter: none !important;
+}
+
+.file-item-add {
+    width: 97px;
+}
+
+.file-info {
+    width: 100%;
+    height: 60px;
+    padding-left: 64px;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    line-height: 16px;
+}
+.file-info-red {
+    color: red;
+}
+
+.file-item .image-container {
+    cursor: pointer;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    height: 85px !important;
+    width: 70px;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+}
+
+.image-container .icon {
+    font-size: 76px;
+    color: #ccc;
+    margin: -12px -10px;
+    line-height: 110px !important;
+}
+
+.file-item:hover .uploaded-image-delete-button,
+.file-item:hover .uploaded-image-edit-button,
+.file-item:hover .uploaded-image-download-button {
+    display: block !important;
+}
+
+.uploaded-image-download-button {
+    position: absolute;
+    right: 42px;
+    bottom: 8px;
+    cursor: pointer;
+    display: none !important;
+}
+
+.uploaded-image-edit-button {
+    position: absolute;
+    right: 22px;
+    bottom: 8px;
+    cursor: pointer;
+    display: none !important;
+}
+
+.uploaded-image-delete-button {
+    color: #ed5565;
+    position: absolute;
+    right: 2px;
+    bottom: 8px;
+    cursor: pointer;
+    display: none !important;
+}
+
+.uploaded-image-add-button {
+    color: #d8d8d8;
+    cursor: pointer;
+    font-size: 30px !important;
+    margin: 0 !important;
+    height: initial !important;
+}
+
+.placeholder-image {
+    background: url(/assets/img/photo.svg) center no-repeat;
+    cursor: pointer;
+}
+
+.hiddenfileinput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.uploader {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    outline: 2px dashed #ccc;
+    outline-offset: 5px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dragndrop {
+    outline: 2px dashed #f08080;
+    color: #f08080;
+}
+
+.uploader input {
+    display: none;
+}
+.uploader img,
+.uploader .icon {
+    pointer-events: none;
+}
+.uploader,
+.uploader .icon {
+    transition: all 100ms ease-in;
+    margin-bottom: 16px !important;
+}
+.uploader .icon {
+    color: #eee;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 5em;
+}
+.uploader img {
+    left: 50%;
+    opacity: 0;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    transition: all 300ms ease-in;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.uploader.loaded img {
+    opacity: 1;
+}
+.ui.placeholder.segment {
+    min-height: 1rem !important;
+}
+
+.ui.input input[placeholder]::placeholder {
+    color: #868686;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0 !important;
+}
+
+.no-top-margin {
+    margin-top: 0 !important;
+}
+
+.ui.segment {
+    width: 100%;
+}

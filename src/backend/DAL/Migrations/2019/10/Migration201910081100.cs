@@ -1,0 +1,410 @@
+using System;
+using Domain.Extensions;
+using ThinkingHome.Migrator.Framework;
+
+namespace DAL.Migrations
+{
+    [Migration(201910081100)]
+    public class InitDatabaseData : Migration
+    {
+        public override void Apply()
+        {
+            var administratorRoleId = AddRole("Administrator");
+            var customerServiceRoleId = AddRole("CustomerService");
+            var transportСoordinatorId = AddRole("TransportCoordinator");
+            var transportCompanyEmployee = AddRole("TransportCompanyEmployee");
+
+            AddUser("Иван Иванов", administratorRoleId, "admin@admin.ru", "123".GetHash());
+            AddUser("Андрей Городецкий", customerServiceRoleId, "andry@tms.ru", "123".GetHash());
+            AddUser("Максим Координатович", transportСoordinatorId, "max@tms.ru", "123".GetHash());
+            AddUser("Сергей Газельев", transportCompanyEmployee, "gazelev@tms.ru", "123".GetHash());
+
+            AddTaskProperties("ImportProducts", "ConnectionString=sftp://bsdf-usr:e7%24xFSMgYw%2Bc4N@213.189.208.101/;Folder=/Test/OUT;ViewHours=168");
+            AddTaskProperties("ImportOrder", "ConnectionString=sftp://bsdf-usr:e7%24xFSMgYw%2Bc4N@213.189.208.101/;Folder=/Test/OUT;ViewHours=168");
+
+            AddDocumentType("Накладная");
+            AddDocumentType("Счет-фактура");
+            AddDocumentType("Другое");
+
+            AddTranslation("accounts", "Accounts", "Счета");
+            AddTranslation("actualDocumentsReturnDate", "Actual documents return date", "Фактическая дата возврата документов");
+            AddTranslation("actualPalletsCount", "Actual no. of pallets", "Фактическое количество паллет");
+            AddTranslation("actualReturnDate", "Actual return days", "Фактический срок возврата");
+            AddTranslation("actualWeightKg", "Actual weight, kg", "Фактический вес, кг");
+            AddTranslation("Add document", "Add document", "Добавить документ");
+            AddTranslation("add value", "Add value", "Добавить значение");
+            AddTranslation("addButton", "Add", "Добавить");
+            AddTranslation("additionalCostsComments", "Additional costs comments", "Дополнительные расходы на доставку (комментарии)");
+            AddTranslation("additionalCostsWithoutVAT", "Additional costs, excl. VAT", "Дополнительные расходы на доставку, без НДС");
+            AddTranslation("additionalPointRate", "Additional point rate", "Ставка за дополнительную точку");
+            AddTranslation("address", "Address", "Адрес");
+            AddTranslation("addressFrom", "addressFrom", "Адрес от");
+            AddTranslation("addressTo", "addressTo", "Адрес до");
+            AddTranslation("Administrator", "Administrator", "Администратор");
+            AddTranslation("All", "All", "Все");
+            AddTranslation("archive", "Archive", "В архиве");
+            AddTranslation("archiveShipping", "Move to archive", "Перевести в архив");
+            AddTranslation("Are you sure to complete", "Are you sure to complete", "Выполнить действие");
+            AddTranslation("article", "Article", "Артикул");
+            AddTranslation("articles", "Articles", "Артикулы");
+            AddTranslation("articlesCount", "No. of materials", "Количество артикулов");
+            AddTranslation("Available", "Available", "Доступные поля");
+            AddTranslation("bDFInvoiceNumber", "Delivery No. BDF", "Номер накладной BDF");
+            AddTranslation("billingMethod", "BillingMethod", "Способ тарификации");
+            AddTranslation("billingShipping", "Bill", "Выставить счет");
+            AddTranslation("blankArrival", "Blank arrival", "Холостая подача");
+            AddTranslation("blankArrivalRate", "Blank arrival rate", "Ставка за холостую подачу");
+            AddTranslation("boxesCount", "Planned no. of boxes", "Предварительное количество коробок");
+            AddTranslation("boxesCountGroup", "Boxes count", "Количество коробок");
+            AddTranslation("boxHeightMm", "BoxHeightMm", "Высота короба, мм");
+            AddTranslation("boxLengthMm", "BoxLengthMm", "Длина короба, мм");
+            AddTranslation("cancel", "cancel", "Отменить");
+            AddTranslation("CancelButton", "Cancel", "Отменить");
+            AddTranslation("canceled", "Canceled", "Отменён");
+            AddTranslation("cancelOrder", "Cancel order", "Отменить заказ");
+            AddTranslation("cancelOrders", "CancelOrders", "Отменить заказы");
+            AddTranslation("cancelRequestShipping", "Cancel request", "Отменить заявку");
+            AddTranslation("cancelShipping", "Cancel shipping", "Отменить перевозку");
+            AddTranslation("carrierId", "Carrier", "Транспортная компания");
+            AddTranslation("city", "City", "Город");
+            AddTranslation("clientAvisationTime", "Client's avisation time", "Время авизации у клиента");
+            AddTranslation("clientName", "Client name", "Клиент");
+            AddTranslation("completeShipping", "Complete shipping", "Завершить перевозку");
+            AddTranslation("confirmedBoxesCount", "Confirmed no. of boxes", "Подтвержденное количество коробок");
+            AddTranslation("confirmedPalletsCount", "Confirmed no. of pallets", "Подтвержденное количество паллет");
+            AddTranslation("confirmShipping", "Confirm request", "Подтвердить заявку");
+            AddTranslation("contractNumber", "ContractNumber", "Номер договора");
+            AddTranslation("costsConfirmedByCarrier", "Costs confirmed by carrier", "Расходы подтверждены ТК");
+            AddTranslation("costsConfirmedByShipper", "Costs confirmed by shipper", "Расходы подтверждены грузоотправителем");
+            AddTranslation("countryOfOrigin", "CountryOfOrigin", "Страна происхождения");
+            AddTranslation("Create a Photo", "Create a Photo", "Сделать фотографию");
+            AddTranslation("Create representation", "Create representation", "Создание представления");
+            AddTranslation("create_btn", "Create", "Создать");
+            AddTranslation("create_orders", "Create order", "Создать заказ");
+            AddTranslation("create_role", "Create role", "Создать роль");
+            AddTranslation("create_role_title", "Create role", "Создание роли");
+            AddTranslation("create_shippings", "Create shipping", "Создать перевозку");
+            AddTranslation("create_user", "Create user", "Создать пользователя");
+            AddTranslation("create_user_title", "Create user", "Создание пользователя");
+            AddTranslation("createCard", "Create", "Создание");
+            AddTranslation("created", "Created", "Создан");
+            AddTranslation("createShipping", "Create shipping", "Создать перевозку");
+            AddTranslation("createShippingForeach", "CreateShippingForEach", "Создать перевозку для каждого заказа");
+            AddTranslation("customerWarehouse", "CustomerWarehouse", "Склад клиента");
+            AddTranslation("dateOfPowerOfAttorney", "DateOfPowerOfAttorney", "Дата доверенности");
+            AddTranslation("delete", "Delete", "Удалить");
+            AddTranslation("Delete document", "Delete document {{name}}?", "Удалить докуьуте {{name}}?");
+            AddTranslation("delivered", "Delivered", "Доставлен");
+            AddTranslation("delivery", "Delivery", "Доставка");
+            AddTranslation("deliveryAddress", "Delivery address", "Адрес доставки");
+            AddTranslation("deliveryCity", "DeliveryCity", "Город доставки");
+            AddTranslation("deliveryCostWithoutVAT", "Delivery cost, excl. VAT", "Стоимость перевозки, без НДС");
+            AddTranslation("deliveryDate", "Requested delivery date", "Дата доставки");
+            AddTranslation("deliveryInvoiceNumber", "Delivery invoice number", "Номер счета за доставку");
+            AddTranslation("deliveryity", "City", "Город");
+            AddTranslation("deliveryRegion", "Region", "Регион");
+            AddTranslation("deliveryStatus", "Delivery status", "Статус доставки");
+            AddTranslation("deliveryType", "Delivery type", "Способ доставки");
+            AddTranslation("description", "Description", "Описание");
+            AddTranslation("deviationReasonsComments", "Comments (deviation from schedule reasons)", "Комментарии (причины отклонения от графика)");
+            AddTranslation("dictionaries", "Dictionaries", "Справочники");
+            AddTranslation("Document name", "Document name", "Название документа");
+            AddTranslation("documentAttached", "Document {0} is attached", "Добавлен документ {0}");
+            AddTranslation("documentRemoved", "Document {0} is removed", "Удален документ {0}");
+            AddTranslation("documents", "documents", "Документы");
+            AddTranslation("documentsReturnDate", "Planning documents return date", "Плановая дата возврата документов");
+            AddTranslation("documentTypes", "Document types", "Типы документов");
+            AddTranslation("download", "Download", "Скачать");
+            AddTranslation("downtimeRate", "Downtime rate", "Ставка за простой");
+            AddTranslation("draft", "Draft", "Не проверен");
+            AddTranslation("ean", "Ean", "EAN");
+            AddTranslation("eANBox", "EANBox", "EAN, короб");
+            AddTranslation("eANPallet", "EANPallet", "EAN, паллета");
+            AddTranslation("eANShrink", "EANShrink", "EAN, shrink");
+            AddTranslation("edit", "Edit", "Редактирование");
+            AddTranslation("Edit document", "Edit document", "Редактировать документ");
+            AddTranslation("Edit representation", "Edit representation {{name}}", "Редактирование представления {{name}}");
+            AddTranslation("edit_btn", "Edit", "Редактировать");
+            AddTranslation("edit_orders", "Order {{number}} - {{status}}", "Заказ {{number}} - {{status}}");
+            AddTranslation("edit_role", "Edit role {{name}}", "Редактировать роль {{name}}");
+            AddTranslation("edit_shippings", "Shipping {{number}} - {{status}}", "Перевозка {{number}} - {{status}}");
+            AddTranslation("edit_user", "Edit user {{name}}", "Редактирование пользователя {{name}}");
+            AddTranslation("editCard", "Edit", "Редактирование");
+            AddTranslation("emptyValue", "(empty)", "(пусто)");
+            AddTranslation("error_file_size", "error_file_size", "Размер файла не должен превышать 10Mb");
+            AddTranslation("exit", "Exit", "Выйти");
+            AddTranslation("exportExcel", "Export to Excel", "Выгрузить в Excel");
+            AddTranslation("fact", "fact", "Подтверждённое");
+            AddTranslation("factWeigth", "fact", "Подтвержденный");
+            AddTranslation("fd", "FD", "FD");
+            AddTranslation("fieldChanged", "Field {0} is set to {2}", "Значение поля {0} изменено на '{2}'");
+            AddTranslation("for", "for", "для");
+            AddTranslation("from", "From", "От");
+            AddTranslation("ftl", "FTL", "FTL");
+            AddTranslation("fTLBet", "FTLBet", "Ставка FTL");
+            AddTranslation("fullReject", "OrderShipped", "Полный возврат");
+            AddTranslation("fullReturn", "FullReturn", "Полный возврат");
+            AddTranslation("general info", "General info", "Общая информация");
+            AddTranslation("grossBoxWeightG", "GrossBoxWeightG", "Вес короба брутто, г");
+            AddTranslation("grossLayerWeightMm", "GrossLayerWeightMm", "Вес слоя брутто, мм");
+            AddTranslation("grossPalletWeightG", "GrossPalletWeightG", "Вес паллеты брутто, г");
+            AddTranslation("grossShrinkWeightG", "GrossShrinkWeightG", "Вес shrink брутто, г");
+            AddTranslation("heightShrinkMm", "HeightShrinkMm", "Высота shrink, мм");
+            AddTranslation("history", "history", "История");
+            AddTranslation("importFromExcel", "Import from Excel", "Загрузить из Excel");
+            AddTranslation("information", "Information", "Информация");
+            AddTranslation("inShipping", "InShipping", "В перевозке");
+            AddTranslation("invoice", "Invoice", "Счет-фактура");
+            AddTranslation("invoiceAmountExcludingVAT", "Invoice value, excl. VAT", "Сумма по ТТН, без НДС");
+            AddTranslation("invoiceAmountWithoutVAT", "Invoice value, excl. VAT", "Сумма по ТТН, без НДС");
+            AddTranslation("invoiceNumber", "Invoice number", "Номер счет-фактуры");
+            AddTranslation("isActive", "Active", "Активен");
+            AddTranslation("layerHeightMm", "LayerHeightMm", "Высота слоя, мм");
+            AddTranslation("layerLengthMm", "LayerLengthMm", "Длина слоя, мм");
+            AddTranslation("layerWidthMm", "LayerWidthMm", "Ширина слоя, мм");
+            AddTranslation("leadtimeDays", "LeadtimeDays", "Leadtime, дней");
+            AddTranslation("lengthShrinkMm", "LengthShrinkMm", "Длина shrink, мм");
+            AddTranslation("loadingArrivalTime", "Arrival time to BDF WH", "Время прибытия на загрузку  (склад БДФ)");
+            AddTranslation("loadingDepartureTime", "Departure time from BDF WH", "Время убытия со склада БДФ");
+            AddTranslation("login", "Email", "Email");
+            AddTranslation("login_btn", "Login", "Войти");
+            AddTranslation("login_support", "login_support", "TMS для компании Beiersdorf");
+            AddTranslation("login_welcome", "login_welcome", "TMS Beiersdorf");
+            AddTranslation("lost", "Lost", "Потерян");
+            AddTranslation("ltl", "LTL", "LTL");
+            AddTranslation("lTLRate1", "LTL Rate 1", "Ставка LTL 1");
+            AddTranslation("lTLRate10", "LTL Rate 10", "Ставка LTL 10");
+            AddTranslation("lTLRate11", "LTL Rate 11", "Ставка LTL 11");
+            AddTranslation("lTLRate12", "LTL Rate 12", "Ставка LTL 12");
+            AddTranslation("lTLRate13", "LTL Rate 13", "Ставка LTL 13");
+            AddTranslation("lTLRate14", "LTL Rate 14", "Ставка LTL 14");
+            AddTranslation("lTLRate15", "LTL Rate 15", "Ставка LTL 15");
+            AddTranslation("lTLRate16", "LTL Rate 16", "Ставка LTL 16");
+            AddTranslation("lTLRate17", "LTL Rate 17", "Ставка LTL 17");
+            AddTranslation("lTLRate18", "LTL Rate 18", "Ставка LTL 18");
+            AddTranslation("lTLRate19", "LTL Rate 19", "Ставка LTL 19");
+            AddTranslation("lTLRate2", "LTL Rate 2", "Ставка LTL 2");
+            AddTranslation("lTLRate20", "LTL Rate 20", "Ставка LTL 20");
+            AddTranslation("lTLRate21", "LTL Rate 21", "Ставка LTL 21");
+            AddTranslation("lTLRate22", "LTL Rate 22", "Ставка LTL 22");
+            AddTranslation("lTLRate23", "LTL Rate 23", "Ставка LTL 23");
+            AddTranslation("lTLRate24", "LTL Rate 24", "Ставка LTL 24");
+            AddTranslation("lTLRate25", "LTL Rate 25", "Ставка LTL 25");
+            AddTranslation("lTLRate26", "LTL Rate 26", "Ставка LTL 26");
+            AddTranslation("lTLRate27", "LTL Rate 27", "Ставка LTL 27");
+            AddTranslation("lTLRate28", "LTL Rate 28", "Ставка LTL 28");
+            AddTranslation("lTLRate29", "LTL Rate 29", "Ставка LTL 29");
+            AddTranslation("lTLRate3", "LTL Rate 3", "Ставка LTL 3");
+            AddTranslation("lTLRate30", "LTL Rate 30", "Ставка LTL 30");
+            AddTranslation("lTLRate31", "LTL Rate 31", "Ставка LTL 31");
+            AddTranslation("lTLRate32", "LTL Rate 32", "Ставка LTL 32");
+            AddTranslation("lTLRate33", "LTL Rate 33", "Ставка LTL 33");
+            AddTranslation("lTLRate4", "LTL Rate 4", "Ставка LTL 4");
+            AddTranslation("lTLRate5", "LTL Rate 5", "Ставка LTL 5");
+            AddTranslation("lTLRate6", "LTL Rate 6", "Ставка LTL 6");
+            AddTranslation("lTLRate7", "LTL Rate 7", "Ставка LTL 7");
+            AddTranslation("lTLRate8", "LTL Rate 8", "Ставка LTL 8");
+            AddTranslation("lTLRate9", "LTL Rate 9", "Ставка LTL 9");
+            AddTranslation("majorAdoptionNumber", "Return act no. (Major)", "Номер приемного акта Мейджор");
+            AddTranslation("name", "Name", "Наименование");
+            AddTranslation("nart", "Nart", "NART");
+            AddTranslation("netBoxWeightG", "NetBoxWeightG", "Вес короба нетто, г");
+            AddTranslation("netWeightMm", "NetWeightMm", "Вес слоя нетто, мм");
+            AddTranslation("netWeightPalletsG", "NetWeightPalletsG", "Вес паллеты нетто, г");
+            AddTranslation("netWeightShrinkG", "NetWeightShrinkG", "Вес shrink нетто, г");
+            AddTranslation("new_orders", "New order", "Новый заказ");
+            AddTranslation("new_shippings", "New shipping", "Новая перевозка");
+            AddTranslation("newOrderCreated", "New order created", "Создан новый заказ");
+            AddTranslation("open_shipping", "Open shipping {{number}}", "Открыть перевозку {{number}}");
+            AddTranslation("or", "OR", "OR");
+            AddTranslation("order", "Order", "Заказ");
+            AddTranslation("order_item", "Order {{number}}", "Заказ {{number}}");
+            AddTranslation("orderAmountExcludingVAT", "Order value, excl. VAT, RUB", "Сумма заказа, без НДС");
+            AddTranslation("orderCancellingShipping", "Shipping {1} is cancelled. Order {0} is removed from shipping.", "Перевозка {1} отменена. Заказ {0} удален из перевозки.");
+            AddTranslation("orderComments", "Order comments", "Комментарии по заказу");
+            AddTranslation("orderCreationDate", "Order creation date", "Дата создания заказа в системе");
+            AddTranslation("orderDate", "Order date", "Дата заказа");
+            AddTranslation("orderDelivered", "orderDelivered", "Заказ доставлен");
+            AddTranslation("orderNumber", "Order No.", "Номер заказ клиента");
+            AddTranslation("orderRemovedFromShipping", "Order {0} is removed from shipping {1}", "Заказ {0} удален из перевозки {1}");
+            AddTranslation("orders", "Orders", "Заказы");
+            AddTranslation("orderSetArchived", "Order {0} is archived", "Заказ {0} перенесен в архив");
+            AddTranslation("orderSetCancelled", "Order {0} is cancelled", "Заказ {0} отменен");
+            AddTranslation("orderSetCreated", "Order {0} is created", "Создан заказ {0}");
+            AddTranslation("orderSetDelivered", "Order {0} is delivered", "Заказ {0} доставлен");
+            AddTranslation("orderSetDraft", "Order {0} is not verified", "Заказ {0} не проверен");
+            AddTranslation("orderSetFullReturn", "Full return of goods on order {0}", "Полный возврат товара по заказу {0}");
+            AddTranslation("orderSetInShipping", "Order {0} is included in shipping {1}", "Заказ {0} включен в перевозку {1}");
+            AddTranslation("orderSetLost", "Order {0} is lost", "Заказ {0} потерян");
+            AddTranslation("orderSetShipped", "Order {0} is shipped", "Заказ {0} отгружен");
+            AddTranslation("orderShipped", "OrderShipped", "Заказ отгружен");
+            AddTranslation("orderState", "OrderState", "Статус заказа");
+            AddTranslation("orderType", "Order type", "Тип заказа");
+            AddTranslation("otherCosts", "Other", "Прочее");
+            AddTranslation("palletHeightMm", "PalletHeightMm", "Высота паллеты, мм");
+            AddTranslation("palletLengthMm", "PalletLengthMm", "Длина паллеты, мм");
+            AddTranslation("palletsCount", "Planned no. of pallets", "Предварительное количество паллет");
+            AddTranslation("palletsCountGroup", "Pallets count", "Количество паллет");
+            AddTranslation("password", "password", "Пароль");
+            AddTranslation("payer", "Payer", "Плательщик");
+            AddTranslation("permissions", "Permissions", "Разрешения");
+            AddTranslation("PhotoButton", "Photo", "Фото");
+            AddTranslation("pickingTypeId", "Picking type", "Тип комплектации");
+            AddTranslation("pickingTypes", "Picking types", "Типы комплектации");
+            AddTranslation("piecesInABox", "PiecesInABox", "Штук в коробе");
+            AddTranslation("piecesInALayer", "PiecesInALayer", "Штук в слое");
+            AddTranslation("piecesInShrink", "PiecesInShrink", "Штук в shrink");
+            AddTranslation("piecesOnAPallet", "PiecesOnAPallet", "Штук на паллете");
+            AddTranslation("plan", "plan", "Фактическое");
+            AddTranslation("plannedArrivalTimeSlotBDFWarehouse", "Planned arriving time/Time-slot at BDF WH", "Плановое прибытие/тайм-слот (склад БДФ)");
+            AddTranslation("plannedReturnDate", "Planned return days", "Плановый срок возврата");
+            AddTranslation("planWeigth", "fact", "Плановый");
+            AddTranslation("position", "position", "Позиции");
+            AddTranslation("prepare", "prepare", "Предварительное");
+            AddTranslation("problemShipping", "Disruption of shipping", "Срыв поставки");
+            AddTranslation("reconciliation of expenses", "Reconciliation of expenses", "Сверка расходов");
+            AddTranslation("recordFactOfLoss", "recordFactOfLoss", "Заказ потерян");
+            AddTranslation("region", "Region", "Регион");
+            AddTranslation("rejectRequestShipping", "Reject request", "Отклонить заявку");
+            AddTranslation("removeFromShipping", "Remove From Shipping", "Убрать из перевозки");
+            AddTranslation("representation", "Representation", "Представления");
+            AddTranslation("reset_filters", "Reset filters", "Сбросить фильтры");
+            AddTranslation("returnCostWithoutVAT", "Delivery return cost, excl. VAT", "Стоимость перевозки возврата, без НДС");
+            AddTranslation("returnInformation", "Returns info", "Информация по возвратам");
+            AddTranslation("returnRate", "Return rate", "Ставка за возврат");
+            AddTranslation("returns", "returns", "Возвраты");
+            AddTranslation("returnShippingAccountNo", "Invoice No. for return freight", "№ счета за перевозку возврата");
+            AddTranslation("role", "Role", "Роль");
+            AddTranslation("roles", "Roles", "Роли");
+            AddTranslation("route", "route", "Маршрут");
+            AddTranslation("SaveButton", "Save", "Сохранить");
+            AddTranslation("saveOrder", "SaveOrder", "Сохранить");
+            AddTranslation("saveOrders", "SaveOrders", "Сохранить заказы");
+            AddTranslation("search_all_fields", "Search all fields", "Искать по всем полям");
+            AddTranslation("Selected", "Selected", "Выбранные поля");
+            AddTranslation("selfDelivery", "Self delivery", "Самовывоз");
+            AddTranslation("sendShippingToTk", "Send request", "Отправить заявку в ТК");
+            AddTranslation("sendToArchive", "sendToArchive", "Перевести в архив");
+            AddTranslation("shelfLife", "ShelfLife", "Срок годности, дней");
+            AddTranslation("shipmentCity", "Shipment city", "Город отгрузки");
+            AddTranslation("shipped", "Shipped", "Отгружен");
+            AddTranslation("shipping", "Shipping", "Перевозка");
+            AddTranslation("shippingAddress", "Shipping WH address", "Адрес отгрузки");
+            AddTranslation("shippingArhive", "ShippingArhive", "В архиве");
+            AddTranslation("shippingBillSend", "ShippingBillSend", "Счёт выставлен");
+            AddTranslation("shippingCanceled", "Canceled", "Отменена");
+            AddTranslation("shippingCompleted", "Completed", "Завершена");
+            AddTranslation("shippingConfirmed", "Confirmed", "Подтверждена");
+            AddTranslation("shippingCreated", "Created", "Создана");
+            AddTranslation("shippingDate", "Shipment date", "Дата отгрузки");
+            AddTranslation("shippingId", "Shipping", "Перевозка");
+            AddTranslation("shippingNumber", "Shipping number", "Номер перевозки");
+            AddTranslation("shippingProblem", "ShippingProblem", "Срыв поставки");
+            AddTranslation("shippingRejectedByTc", "ShippingRejectedByTc", "Отклонена ТК");
+            AddTranslation("shippingRequestSent", "ShippingRequestSent", "Заявка отправлена");
+            AddTranslation("shippings", "Shippings", "Перевозки");
+            AddTranslation("shippingSetArchived", "Shipping {0} is archived", "Перевозка {0} перенесена в архив");
+            AddTranslation("shippingSetBillSend", "Shipping invoice {0}", "Выставлен счет по перевозке {0}");
+            AddTranslation("shippingSetCancelled", "Shipping {0} is cancelled", "Перевозка {0} отменена");
+            AddTranslation("shippingSetCancelledRequest", "Shipping request {0} is cancelled", "Заявка в ТК по перевозке {0} отменена");
+            AddTranslation("shippingSetCompleted", "Shipping {0} is completed", "Перевозка {0} завершена");
+            AddTranslation("shippingSetConfirmed", "Shipping request {0} is confirmed by transport company", "Заявка на перевозку {0} подтверждена транспортной компанией");
+            AddTranslation("shippingSetCreated", "Shipping {0} is created", "Создана перевозка {0}");
+            AddTranslation("shippingSetProblem", "Disruption of shipping {0}", "Срыв поставки по перевозке {0}");
+            AddTranslation("shippingSetRejected", "Shipping request {0} is rejected by transport company", "Заявка на перевозку {0} отклонена транспортной компанией");
+            AddTranslation("shippingSetRequestSent", "Shipping request {0} is sent to transport company", "Заявка на перевозку {0} направлена в транспортную компанию");
+            AddTranslation("shippingState", "ShippingState", "Статус перевозки");
+            AddTranslation("shippingStatus", "Shipping status", "Статус отгрузки");
+            AddTranslation("soldTo", "Sold-to party", "Sold-to");
+            AddTranslation("soldToNumber", "SoldToNumber", "SoldTo number");
+            AddTranslation("sPGR", "SPGR", "SPGR");
+            AddTranslation("status", "Status", "Статус");
+            AddTranslation("tariff", "Tariff", "Тариф");
+            AddTranslation("tarifficationType", "Tariffication type", "Способ тарификации");
+            AddTranslation("tariffs", "Tariffs", "Тарифы");
+            AddTranslation("temperature", "temperature", "Терморежим °С");
+            AddTranslation("temperatureMax", "Thermal Mode max °C", "Терморежим макс. °C");
+            AddTranslation("temperatureMin", "Thermal Mode min °C", "Терморежим мин. °C");
+            AddTranslation("title", "Title", "Название");
+            AddTranslation("to", "To", "До");
+            AddTranslation("totalCount", "{{count}} records", "{{count}} записей");
+            AddTranslation("totalDeliveryCost", "Total delivery cost", "Общая стоимость перевозки");
+            AddTranslation("transitDays", "Days in transit", "Дней в пути");
+            AddTranslation("translations", "Translations", "Локализация");
+            AddTranslation("transportCompanies", "TransportCompanies", "Транспортные компании");
+            AddTranslation("transportCompany", "TransportCompany", "Транспортная компания");
+            AddTranslation("TransportCompanyEmployee", "Transport Company Employee", "Сотрудник транспортной компании");
+            AddTranslation("TransportCoordinator", "Transport Coordinator", "Транспортный координатор");
+            AddTranslation("transportWaybill", "Waybill + Transport section", "Товарно-Транспортная накладная + Транспортный раздел");
+            AddTranslation("trucksDowntime", "Downtime", "Кол-во часов простоя машин");
+            AddTranslation("Type", "Type", "Тип");
+            AddTranslation("unionOrders", "Union orders", "Объединить в перевозку");
+            AddTranslation("unitHeightGoodsMm", "UnitHeightGoodsMm", "Высота ед. товара, мм");
+            AddTranslation("unitLengthGoodsMm", "UnitLengthGoodsMm", "Длина ед. товара, мм");
+            AddTranslation("unloadingArrivalDate", "Actual arrival date to client", "Фактическая дата прибытия к грузополучателю");
+            AddTranslation("unloadingArrivalTime", "Arrival time to client", "Время прибытия к грузополучателю");
+            AddTranslation("unloadingDepartureDate", "Actual departure date from client", "Дата убытия от грузополучателя");
+            AddTranslation("unloadingDepartureTime", "Departure time from client", "Время убытия от грузополучателя");
+            AddTranslation("Upload file", "Document name", "Загрузите файл");
+            AddTranslation("usePickingType", "Fill order picking type", "Определение типа комплектации");
+            AddTranslation("UserIncorrectData", "The username or password you entered is incorrect", "Неверное имя пользователя или пароль");
+            AddTranslation("userName", "User name", "ФИО");
+            AddTranslation("UserNotFound", "User not found", "Пользователь не найден или не активен");
+            AddTranslation("Users", "Users", "Пользователи");
+            AddTranslation("vehicleArrived", "Vehicle arrived", "ТС прибыло");
+            AddTranslation("vehicleDepartured", "Vehicle departured", "ТС убыло");
+            AddTranslation("vehicleEmpty", "Empty", "Не указан");
+            AddTranslation("vehicleType", "VehicleType", "Тип ТС");
+            AddTranslation("vehicleTypeId", "Vehicle type", "Тип ТС");
+            AddTranslation("vehicleTypes", "Vehicle types", "Типы ТС");
+            AddTranslation("vehicleWaiting", "Waiting vehicle", "Ожидает ТС");
+            AddTranslation("warehouse", "Warehouse", "Склад");
+            AddTranslation("warehouseName", "Warehouse name", "Наименование склада");
+            AddTranslation("warehouses", "Warehouses", "Склады");
+            AddTranslation("waybill", "Waybill", "Транспортная накладная");
+            AddTranslation("waybillTorg12", "Waybill Torg-12", "Товарная накладная(Торг-12)");
+            AddTranslation("weightKg", "Planned weight, kg", "Плановый вес, кг");
+            AddTranslation("weightUnitsGrossProductG", "WeightUnitsGrossProductG", "Вес ед. товара брутто, г");
+            AddTranslation("weightUnitsNetGoodsG", "WeightUnitsNetGoodsG", "Вес ед. товара нетто, г");
+            AddTranslation("weigth", "weigth", "Вес, кг");
+            AddTranslation("widthOfABoxMm", "WidthOfABoxMm", "Ширина короба, мм");
+            AddTranslation("widthOfPalletsMm", "WidthOfPalletsMm", "Ширина паллеты, мм");
+            AddTranslation("widthShrinkMm", "WidthShrinkMm", "Ширина shrink, мм");
+            AddTranslation("widthUnitsGoodsMm", "WidthUnitsGoodsMm", "Ширина ед. товара, мм");
+        }
+
+        private string AddTranslation(string name, string en, string ru)
+        {
+            var id = (Guid.NewGuid()).ToString();
+            Database.Insert("Translations", new string[] { "Id", "Name", "En", "Ru" },
+                new string[] { id, name, en, ru });
+            return id;
+        }
+
+        private string AddRole(string name)
+        {
+            var id = (Guid.NewGuid()).ToString();
+            Database.Insert("Roles", new string[] { "Id", "Name" },
+                new string[] { id, name });
+            return id;
+        }
+
+        private void AddUser(string name, string roleid, string email, string passwordhash)
+        {
+            Database.Insert("Users", new string[] { "Id", "Name", "RoleId", "Email", "IsActive", "FieldsConfig", "PasswordHash" },
+                new string[] { (Guid.NewGuid()).ToString(), name, roleid, email, "true", "", passwordhash });
+        }
+
+        private void AddTaskProperties(string taskName, string properties)
+        {
+            Database.Insert("TaskProperties", new string[] { "Id", "TaskName", "Properties" },
+                new string[] { (Guid.NewGuid()).ToString(), taskName, properties });
+        }
+
+        private void AddDocumentType(string name)
+        {
+            Database.Insert("DocumentTypes", new string[] { "Id", "Name" },
+                new string[] { (Guid.NewGuid()).ToString(), name });
+        }
+    }
+}

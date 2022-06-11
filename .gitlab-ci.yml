@@ -1,0 +1,111 @@
+variables:
+  SSH_OPT: -o StrictHostKeyChecking=no
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - eval $(ssh-agent -s)
+  - echo "$DEPLOY_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - docker login -u $LOGIN_REGISTRY -p $PASS_REGISTRY $REGISTRY_HOST || true
+ 
+### common build
+build:
+  stage: build
+  script:
+    - docker build -t $REGISTRY_HOST/tms-lite-roust-front:$CI_PIPELINE_ID -f ./docker/front/Dockerfile .
+    - docker push $REGISTRY_HOST/tms-lite-roust-front:$CI_PIPELINE_ID
+    - docker build -t $REGISTRY_HOST/tms-lite-roust-tasks:$CI_PIPELINE_ID -f ./docker/tasks/Dockerfile .
+    - docker push $REGISTRY_HOST/tms-lite-roust-tasks:$CI_PIPELINE_ID
+    - docker build -t $REGISTRY_HOST/tms-lite-roust-back:$CI_PIPELINE_ID -f ./docker/back/Dockerfile .
+    - docker push $REGISTRY_HOST/tms-lite-roust-back:$CI_PIPELINE_ID
+  when: manual
+  retry:
+    max: 2
+    when:
+      - script_failure
+
+test1:
+  variables:
+    env: test1
+  stage: deploy
+  script:
+    - cd helm
+    - helm --debug upgrade tasks  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./tasks/values-$env.yaml ./tasks/ -n roust-$env
+    - helm --debug upgrade front  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./front/values-$env.yaml ./front/ -n roust-$env
+    - helm --debug upgrade back  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./back/values-$env.yaml ./back/ -n roust-$env
+    - helm --debug upgrade ingress-front  --install -f ./ingress-front/values-$env.yaml ./ingress-front/ -n roust-$env
+  when: manual
+  needs: ["build"]
+
+dev:
+  variables:
+    env: dev
+  stage: deploy
+  script:
+    - cd helm
+    - helm --debug upgrade tasks  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./tasks/values-$env.yaml ./tasks/ -n roust-$env
+    - helm --debug upgrade front  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./front/values-$env.yaml ./front/ -n roust-$env
+    - helm --debug upgrade back  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./back/values-$env.yaml ./back/ -n roust-$env
+    - helm --debug upgrade ingress-front  --install -f ./ingress-front/values-$env.yaml ./ingress-front/ -n roust-$env
+  when: manual
+  needs: ["build"]
+
+
+dev-dropdb:
+  variables:
+    env: dev
+  stage: deploy
+  script:
+    - cd helm
+    - dump=`ssh backup ls -rt /backup/roust-prod/ |tail -1`
+    - scp backup:/backup/roust-prod/$dump ./
+    - export PGPASSWORD=`kubectl get secret db-postgresql-ha-postgresql -n roust-$env -o yaml |grep postgresql-password|awk '{print $2}'|base64 --decode`
+    - db_ip=`kubectl get svc -n roust-$env|grep db-postgresql-ha-pgpool|awk '{print $3}'`
+    - cat ./postgresql-ha/dropdb.sql|psql -h $db_ip -Utms tms
+    - bzcat $dump|psql -h $db_ip -Utms tms
+    - helm --debug upgrade tasks  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./tasks/values-$env.yaml ./tasks/ -n roust-$env
+    - helm --debug upgrade back  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./back/values-$env.yaml ./back/ -n roust-$env
+    - helm --debug upgrade front  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./front/values-$env.yaml ./front/ -n roust-$env
+    - helm --debug upgrade ingress-front  --install -f ./ingress-front/values-$env.yaml ./ingress-front/ -n roust-$env
+  tags:
+    - stage-pooling
+  when: manual
+  needs: ["build"]
+
+test1-dropdb:
+  variables:
+    env: test1
+  stage: deploy
+  script:
+    - cd helm
+    - dump=`ssh backup ls -rt /backup/roust-prod/ |tail -1`
+    - scp backup:/backup/roust-prod/$dump ./
+    - export PGPASSWORD=`kubectl get secret db-postgresql-ha-postgresql -n roust-$env -o yaml |grep postgresql-password|awk '{print $2}'|base64 --decode`
+    - db_ip=`kubectl get svc -n roust-$env|grep db-postgresql-ha-pgpool|awk '{print $3}'`
+    - cat ./postgresql-ha/dropdb.sql|psql -h $db_ip -Utms tms
+    - bzcat $dump|psql -h $db_ip -Utms tms
+    - helm --debug upgrade tasks  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./tasks/values-$env.yaml ./tasks/ -n roust-$env
+    - helm --debug upgrade back  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./back/values-$env.yaml ./back/ -n roust-$env
+    - helm --debug upgrade front  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./front/values-$env.yaml ./front/ -n roust-$env
+    - helm --debug upgrade ingress-front  --install -f ./ingress-front/values-$env.yaml ./ingress-front/ -n roust-$env
+  tags:
+    - stage-pooling
+  when: manual
+  needs: ["build"]
+
+deploy-prod:
+  stage: deploy
+  variables:
+    env: production
+  script:
+    - cd helm && export KUBECONFIG=$kubeconfig
+    - helm --debug upgrade tasks  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./tasks/values-$env.yaml ./tasks/ -n roust-$env
+    - helm --debug upgrade front  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./front/values-$env.yaml ./front/ -n roust-$env
+    - helm --debug upgrade back  --install --wait --set image.tag="$CI_PIPELINE_ID" -f ./back/values-$env.yaml ./back/ -n roust-$env
+    - helm --debug upgrade ingress-front  --install -f ./ingress-front/values-$env.yaml ./ingress-front/ -n roust-$env
+  when: manual
+  needs: ["build"]
+  only:
+   - master

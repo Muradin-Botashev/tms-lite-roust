@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}
+data:
+{{ (tpl (.Files.Glob (printf "%s" .Values.env.ASPNETCORE_ENVIRONMENT ) ).AsConfig . ) | indent 2 }}
+

@@ -1,0 +1,25 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: registry.artlogics.ru/tms-lite-roust-back
+  tag: prod
+  pullPolicy: IfNotPresent
+  imagePullSecrets: gitlab-registry
+env:
+  ASPNETCORE_ENVIRONMENT: "Production"
+service:
+  name: back
+  type: ClusterIP
+  externalPort: 5000
+  internalPort: 5000
+  #resources:
+  #limits:
+  # cpu: 300m
+  # memory: 800Mi
+  #requests:
+  # cpu: 100m
+  # memory: 700Mi
+
+ingress:
+  enabled: false

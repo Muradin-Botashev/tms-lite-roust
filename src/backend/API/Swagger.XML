@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="M:API.Controllers.AppConfigurationController.Configuration">
+            <summary>
+            Получение конфигурации гридов и справочников
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.Run(Domain.Services.Autogrouping.RunRequest)">
+            <summary>
+            Запуск автогруппировки
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.ChangeCarrier(System.Guid,Domain.Services.Autogrouping.ChangeCarrierRequest)">
+            <summary>
+            Изменение ТК в результате авторуппировки
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.MoveOrders(System.Guid,Domain.Services.Autogrouping.MoveOrderRequest)">
+            <summary>
+            Перенос накладных в другую перевозку в результате авторуппировки
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.Apply(System.Guid,Domain.Services.Autogrouping.ApplyRequest)">
+            <summary>
+            Применение авторуппировки
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.ApplyAndSend(System.Guid,Domain.Services.Autogrouping.ApplyRequest)">
+            <summary>
+            Применение авторуппировки и отправка в ТК
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.Search(System.Guid,Domain.Shared.FilterFormDto{Domain.Services.Autogrouping.AutogroupingFilterDto})">
+            <summary>
+            Поиск по вхождению с пагинацией
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.SearchIds(System.Guid,Domain.Shared.FilterFormDto{Domain.Services.Autogrouping.AutogroupingFilterDto})">
+            <summary>
+            Получение Id сущностей, подходящих под фильтр
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.ForSelect(System.Guid,System.String,Domain.Shared.FilterFormDto{Domain.Services.Autogrouping.AutogroupingFilterDto})">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.ExportToExcel(System.Guid,Domain.Shared.ExportExcelFormDto{Domain.Services.Autogrouping.AutogroupingFilterDto})">
+            <summary>
+            Экспортировать в excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingController.GetSummary(System.Guid)">
+            <summary>
+            Получение сводной информации по выделенным записям
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingOpenController.Run(Domain.Services.Autogrouping.OpenRunRequest)">
+            <summary>
+            Запуск автогруппировки
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingOrdersController.Search(System.Guid,System.String,Domain.Shared.FilterFormDto{Domain.Services.Autogrouping.AutogroupingOrdersFilterDto})">
+            <summary>
+            Поиск по вхождению с пагинацией
+            </summary>
+        </member>
+        <member name="M:API.Controllers.AutogroupingOrdersController.ForSelect(System.Guid,System.String,System.String,Domain.Shared.FilterFormDto{Domain.Services.Autogrouping.AutogroupingOrdersFilterDto})">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ClientNameController.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ClientNameController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Dictionary.RolesController.SetActive(System.Guid,System.Boolean)">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Dictionary.RolesController.GetAllPermissions">
+            <summary>
+            Получение списка всех доступных разрешений
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Dictionary.RolesController.GetAllActions">
+            <summary>
+            Получение списка всех доступных действий
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Dictionary.RolesController.GetAllBacklights">
+            <summary>
+            Получение списка всех доступных подсветок
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Dictionary.TranslationController.GetForLangType(System.String)">
+            <summary>
+            Получение переводов для языка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Dictionary.UsersController.SetActive(System.Guid,System.Boolean)">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="T:API.Controllers.FieldPropertiesController">
+            <summary>
+            Настройка полей
+            </summary>    
+        </member>
+        <member name="M:API.Controllers.FieldPropertiesController.GetFor(Domain.Services.FieldProperties.FieldPropertiesGetForParams)">
+            <summary>
+            Получить список полей и отображения по статусам
+            </summary>
+        </member>
+        <member name="M:API.Controllers.FieldPropertiesController.GetForField(Domain.Services.FieldProperties.GetForFieldPropertyParams)">
+            <summary>
+            Получить права доступа для поля
+            </summary>
+        </member>
+        <member name="M:API.Controllers.FieldPropertiesController.Save(Domain.Services.FieldProperties.FieldPropertyDto)">
+            <summary>
+            Сохранить
+            </summary>
+        </member>
+        <member name="M:API.Controllers.FieldPropertiesController.ToggleHiddenState(Domain.Services.FieldProperties.ToggleHiddenStateDto)">
+            <summary>
+            Переключить "Скрыто" у поля
+            </summary>
+        </member>
+        <member name="M:API.Controllers.FieldPropertiesController.GetCompanies">
+            <summary>
+            Получение списка ролей
+            </summary>
+        </member>
+        <member name="T:API.Controllers.FilesController">
+            <summary>
+            Файлы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.FilesController.Upload(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Загрузка файла
+            </summary>
+            <param name="formFile">Файл</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.FilesController.Upload(API.Models.FileBase64Dto)">
+            <summary>
+            Загрузка файла в base64 кодировке
+            </summary>
+            <param name="dto">Файл</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.FilesController.Get(System.Guid)">
+            <summary>
+            Получить файл на просмотр
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.FilesController.Download(System.Guid)">
+            <summary>
+            Скачать файл
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.Grid.OrdersController.Search(Domain.Shared.NumberSearchFormDto)">
+            <summary>
+            Поиск по номеру
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Grid.ShippingsController.Search(Domain.Shared.NumberSearchFormDto)">
+            <summary>
+            Поиск по номеру
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Grid.ShippingsController.GetCreateFormConfiguration">
+            <summary>
+            Конфигурация полей формы создания новой перевозки вместе с накладными
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Grid.ShippingsController.DefaultCreateForm">
+            <summary>
+            Создание новой перевозки вместе с накладными
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Grid.ShippingsController.Create(Domain.Services.Shippings.CreateShippingDto)">
+            <summary>
+            Создание новой перевозки вместе с накладными
+            </summary>
+        </member>
+        <member name="T:API.Controllers.HistoryController">
+            <summary>
+            История
+            </summary>
+        </member>
+        <member name="M:API.Controllers.HistoryController.Get(System.Guid)">
+            <summary>
+            Получить историю сущности
+            </summary>
+            <param name="entityId">Идентификатор сущности</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.IdentityController.UserInfo">
+            <summary>
+            Получение информации о пользователе
+            </summary>
+        </member>
+        <member name="M:API.Controllers.IdentityController.Login(Domain.Services.Identity.IdentityModel)">
+            <summary>
+            Авторизация, получение токена для логина и пароля
+            </summary>
+        </member>
+        <member name="M:API.Controllers.IdentityController.ChangeMasterPassword(Domain.Services.Profile.SetNewPasswordDto)">
+            <summary>
+            Смена мастер-пароля
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.InvoicesImportController.GenerateExcelTemplate">
+            <summary>
+            Сформировать Excel шаблон
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.InvoicesImportController.ImportFromExcel">
+            <summary>
+            Импортировать из excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.OrdersImportController.GenerateExcelTemplate">
+            <summary>
+            Сформировать Excel шаблон
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.OrdersImportController.ImportFromExcel">
+            <summary>
+            Импортировать из excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.PoolingWarehousesImportController.GenerateExcelTemplate">
+            <summary>
+            Сформировать Excel шаблон
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.PoolingWarehousesImportController.ImportFromExcel">
+            <summary>
+            Импортировать из excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.ShippingVehicleImportController.GenerateExcelTemplate">
+            <summary>
+            Сформировать Excel шаблон
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Import.ShippingVehicleImportController.ImportFromExcel">
+            <summary>
+            Импортировать из excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ProfileController.Info">
+            <summary>
+            Получение профиля текущего пользователя
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ProfileController.Save(Domain.Services.Profile.SaveProfileDto)">
+            <summary>
+            Сохранение новой информации о пользователе
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ProfileController.GetAllNotifications">
+            <summary>
+            Получение списка всех доступных разрешений
+            </summary>
+        </member>
+        <member name="M:API.Controllers.OperationalReportController.GetReport(Domain.Services.Reports.ReportParametersDto)">
+            <summary>
+            Получить операционный отчёт
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.OperationalReportController.ExportReport(Domain.Services.Reports.ReportParametersDto)">
+            <summary>
+            Получить операционный отчёт
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.RegistryReportController.ExportReport(Domain.Services.Reports.Registry.RegistryReportParameters)">
+            <summary>
+            Выгрузка реестра
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:API.Controllers.Shared.DictionaryController`4">
+            <summary>
+            Словарь
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TDto"></typeparam>
+            <typeparam name="TFilter"></typeparam>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.#ctor(`0,Domain.Services.AppConfiguration.IAppConfigurationService)">
+            <summary>
+            Словарь
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.Search(Domain.Shared.FilterFormDto{`3})">
+            <summary>
+            Поиск по вхождению с пагинацией
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.ForSelect(System.String,Domain.Shared.FilterFormDto{`3})">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.GetById(System.Guid)">
+            <summary>
+            Данные по id
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.Import(System.Collections.Generic.IEnumerable{`2},System.String)">
+            <summary>
+            Импортировать
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.ImportFromExcel(System.String)">
+            <summary>
+            Импортировать из excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.ExportToExcel(Domain.Shared.FilterFormDto{`3})">
+            <summary>
+            Экспортировать в excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.SaveOrCreate(`2,System.String)">
+            <summary>
+            Сохранить или изменить
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.Delete(System.Guid)">
+            <summary>
+            Удалить
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.GetDefaults">
+            <summary>
+            Получить значения по умолчанию
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.DictionaryController`4.GetFormConfiguration(System.Guid)">
+            <summary>
+            Получить значения по умолчанию
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.Search(Domain.Shared.FilterFormDto{`5})">
+            <summary>
+            Поиск по вхождению с пагинацией
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.SearchIds(Domain.Shared.FilterFormDto{`5})">
+            <summary>
+            Получение Id сущностей, подходящих под фильтр
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.ForSelect(System.String,Domain.Shared.FilterFormDto{`5})">
+            <summary>
+            Получение данных для выпадающего списка в 
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.GetById(System.Guid)">
+            <summary>
+            Данные по id
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.Import(System.Collections.Generic.IEnumerable{`3})">
+            <summary>
+            Импортировать
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.ImportFromExcel">
+            <summary>
+            Импортировать из excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.ExportToExcel(Domain.Shared.ExportExcelFormDto{`5})">
+            <summary>
+            Экспортировать в excel
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.GetSummary(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Получение сводной информации по выделенным записям
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.GetActions(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Список возможных экшенов
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.InvokeAction(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Выполнить действие
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.GetBulkUpdates(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Список возможных массовых изменений
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.InvokeBulkUpdate(System.String,Domain.Shared.BulkUpdateFormDto)">
+            <summary>
+            Применить массовое изменения
+            </summary>
+        </member>
+        <member name="M:API.Controllers.Shared.GridController`6.SaveOrCreate(`3)">
+            <summary>
+            Сохранить или изменить
+            </summary>
+        </member>
+        <member name="T:API.Controllers.Shared.GridWithDocumentsController`6">
+            <summary>
+            Грид поддерживающий работу с документами
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TDto"></typeparam>
+            <typeparam name="TFormDto"></typeparam>
+            <typeparam name="TSummaryDto"></typeparam>
+            <typeparam name="TFilter"></typeparam>
+        </member>
+        <member name="M:API.Controllers.Shared.GridWithDocumentsController`6.GetDocuments(System.Guid)">
+            <summary>
+            Получить документы
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.Shared.GridWithDocumentsController`6.CreateDocument(System.Guid,Domain.Services.Documents.DocumentDto)">
+            <summary>
+            Создать документ
+            </summary>
+            <param name="id"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.Shared.GridWithDocumentsController`6.UpdateDocument(System.Guid,System.Guid,Domain.Services.Documents.DocumentDto)">
+            <summary>
+            Обновление документа
+            </summary>
+            <param name="id"></param>
+            <param name="documentId"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.Shared.GridWithDocumentsController`6.DeleteDocument(System.Guid,System.Guid)">
+            <summary>
+            Удалить документ
+            </summary>
+            <param name="id"></param>
+            <param name="documentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.EnumController`1.ForSelect">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.EnumController`1.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.StateController`1.GetAll">
+            <summary>
+            Все доступные статусы с цветами
+            </summary>
+        </member>
+        <member name="M:API.Controllers.StateController`1.ForSelect">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.StateController`1.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ShippingWarehouseCityController.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ShippingWarehouseCityController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ShippingWarehouseRegionController.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ShippingWarehouseRegionController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ShippingWarehousesForOrderCreationController.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.ShippingWarehousesForOrderCreationController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.SoldToController.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.SoldToController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.State.OrderShippingStatusController.GetAll">
+            <summary>
+            Все доступные статусы с цветами
+            </summary>
+        </member>
+        <member name="M:API.Controllers.State.OrderShippingStatusController.ForSelect">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.State.OrderShippingStatusController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.State.OrderStateController.GetAll">
+            <summary>
+            Все доступные статусы с цветами
+            </summary>
+        </member>
+        <member name="M:API.Controllers.State.OrderStateController.ForSelect">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="M:API.Controllers.State.OrderStateController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Все доступные статусы
+            </summary>
+        </member>
+        <member name="T:API.Controllers.UserSettingsController">
+            <summary>
+            Пользовательские настройки
+            </summary>
+        </member>
+        <member name="M:API.Controllers.UserSettingsController.GetValue(System.String)">
+            <summary>
+            Получение значения пользовательской настройки
+            </summary>
+            <param name="key">Ключ для настроек</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.UserSettingsController.SetValue(System.String,API.Models.UserSettingValueDto)">
+            <summary>
+            Сохранение пользовательской настройки
+            </summary>
+            <param name="key">Ключ для настроек</param>
+            <param name="value">Новое значение</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Controllers.WarehouseAddressController.ForSelect(Domain.Services.WarehouseAddress.WarehouseAddressFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.WarehouseCityController.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.WarehouseCityController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.WarehouseRegionController.ForSelect">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+        <member name="M:API.Controllers.WarehouseRegionController.ForSelect(API.Models.CompanyFilter)">
+            <summary>
+            Получение данных для выпадающего списка
+            </summary>
+        </member>
+    </members>
+</doc>

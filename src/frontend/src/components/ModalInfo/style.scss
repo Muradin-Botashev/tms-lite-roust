@@ -1,0 +1,55 @@
+.modal-info {
+    top: 64px !important;
+    margin: 0 !important;
+}
+
+.info-component {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+
+    &__green {
+        background-color: rgba(31, 93, 57, 0.08);
+        border: 1px solid #1f5d39;
+    }
+
+    &__red {
+        background-color: rgba(154, 0, 0, 0.08);
+        border: 1px solid #9a0000;
+    }
+
+    &_title {
+        font-weight: bold;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        > div {
+            display: flex;
+        }
+
+        /*&_arrow {
+            position: absolute;
+            right: 0;
+        }*/
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &_content {
+        padding-left: 20px;
+        padding-top: 8px;
+        overflow: hidden;
+        max-height: 0;
+        height: auto;
+       /* -webkit-transition: max-height 4s;
+        transition: max-height 4s;*/
+
+        &__expanded {
+            max-height: 100%;
+        }
+    }
+}
